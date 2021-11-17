@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Paul McClintock</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- header min approx 600px, squarespace changes layout at 640px -->
+
+	<header class="main-header">
+		<div class="announcement-bar">
+			<a href="">Need some art? Commissions are currently open. Click here to get in contact! 🙂</a><button>x</button>
+		</div>
+	
+		<nav>
+			<a class="h3" href="/">Home</a>
+			<a class="h1" href="/">Paul McClintock</a>
+			<span>
+				<a class="h3" href="/">Contact</a>
+				<a class="h3" href="/">Projects</a>
+			</span>
+		</nav>
+
+	</header>
+
+	<dialog id="modal">
+		<figure>
+			<img class="modal" src="/images/capaldi.png">
+			<figcaption></figcaption>
+		</figure>
+	</dialog>
+
+	<main>
+		<section id="feature">
+			<figure>
+				<img class="modal" src="/images/capaldi.png" alt="capaldi">
+				<figcaption>capaldi!</figcaption>
+			</figure>
+		</section>
+	
+		<section class="gallery">
+			<figure>
+				<img class="modal"
+				srcset="/images/szach_1500w.jpg 1500w,
+				/images/szach_1000w.jpg 1000w,
+				/images/szach_750w.jpg 750w"
+				sizes="(max-width: 800px) 750px, (max-width: 1050px) 1000px, 1500px"
+				src="/images/szach_1500w.jpg"
+				alt="David Szach">
+				<figcaption>
+					<p class="h3">David Szach</p>
+					<p>Commission for ABC Radio National for a story about David Szach.<br>(September 2016)</p>
+				</figcaption>
+			</figure>
+			<figure>
+				<img class="modal"
+				srcset="/images/lucky_1000w.jpg 1000w,
+				/images/lucky_750w.jpg 750w"
+				sizes="(max-width: 800px) 750px, (max-width: 1050px) 1000px, 1500px"
+				src="/images/lucky_1000w.jpg"
+				alt="Lucky">
+				<figcaption>
+					<p class="h3">Lucky</p>
+					<p>Digital portrait of @LuckyVegetable.<br>(2016)</p>
+				</figcaption>
+			</figure>
+			<figure>
+				<img class="modal"
+				srcset="/images/phil_1000w.jpg 1000w,
+				/images/phil_300w.jpg 300w"
+				sizes="(max-width: 800px) 300px, 1000px"
+				src="/images/phil_1000w.jpg"
+				alt="Phil">
+				<figcaption>
+					<p class="h3">Phil</p>
+					<p>Digital Painting.<br>(2013)</p>
+				</figcaption>
+			</figure>
+		</section>
+	</main>
+	
+	<script>
+		const el_modal = document.querySelector("#modal");
+		const el_modal_fig = document.querySelector("#modal > figure");
+		const el_modal_img = document.querySelector("#modal > figure > img")
+		const el_modal_figcaption = document.querySelector("#modal > figure > figcaption");
+		const el_gallery_section = document.querySelector(".gallery");
+
+		document.addEventListener("click", e => {
+			if (e.target.classList.contains("modal")) { toggleModal(e.target); }
+		});
+
+		function toggleModal(target) {
+			const open = !el_modal.open;
+
+			if (open) {
+				const cap = target.closest("figure").querySelector("figcaption").innerHTML;
+				el_modal_img.setAttribute("src", target.src);
+				el_modal_figcaption.innerHTML = `${cap}`;
+				el_modal.setAttribute("open", "");
+			} else {
+				el_modal.removeAttribute("open");
+			}
+		}
+	</script>
+</body>
+</html>
