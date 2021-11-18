@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>cover</title>
+
+	<link rel="stylesheet" href="/css/cover.css">
+</head>
+
+<body>
+
+	<dialog id="contact-dialog">
+		<button id="close-dialog" alt="close">x</button>
+		<p class="h3">I'd like an art</p>
+		<form id="contact-form">
+			<label for="name">Name *</label><input type="text" name="name" id="">
+			<label for="email">Email Address *</label><input type="email" name="email" id="">
+			<label for="subject">Subject *</label><input type="text" name="subject" id="">
+			<label for="message">Message *</label>
+			<textarea form="contact-form" name="message" id="" cols="30" rows="10"></textarea>
+			<button type="submit">Submit</button>
+		</form>
+	</dialog>
+
+	<div class="overlay">
+		<header>
+			<p class="title">Paul McClintock</p>
+		</header>
+
+		<main>
+			<p class="callout">who wants an art?</p>
+			<button id="request-art" class="request-art">Request an art, or several!</button>
+		</main>
+
+		<nav>
+			<a href="/portraits">portraits</a>
+			<a href="/sketches">sketches</a>
+			<a href="/illustration">illustration</a>
+		</nav>
+
+		<footer>
+			<a href="https://twitter.com/plauk">
+				<svg style="width: 28px; fill: white;" viewBox="0 0 400 400">
+					<use xlink:href="/images/twitter.svg#logo"></use>
+				</svg>
+			</a>
+		</footer>
+	</div>
+
+	<div class="crossfade">
+		<img src="/images/scene2_f1.png">
+		<img src="/images/page_2+v3f+-+web.jpg">
+		<img src="/images/lucky_1000w.jpg">
+		<img src="/images/capaldi.png">
+		<img src="/images/phil_1000w.jpg">
+		<img src="/images/szach_1500w.jpg">
+		<img src="/images/szach2.jpg">
+		<img src="/images/the-home-team-location-2.jpg">
+	</div>
+
+	<script>
+		document.querySelector("#request-art").addEventListener("click", e => {
+			document.querySelector("#contact-dialog").showModal();
+		});
+
+		document.querySelector("#close-dialog").addEventListener("click", e => {
+			document.querySelector("#contact-dialog").close();
+		});
+	</script>
+
+</body>
+
+</html>
