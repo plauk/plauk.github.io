@@ -3,11 +3,18 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="eat my piss">
 	<title>cover</title>
 
-	<link rel="stylesheet" href="/css/cover.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	
+	<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Jost&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost&display=swap"></noscript>
+
+	<link rel="preload" as="style" href="/css/cover.css" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="/css/cover.css"></noscript>
 </head>
 
 <body>
@@ -15,12 +22,14 @@
 	<dialog id="contact-dialog">
 		<button id="close-dialog" alt="close">x</button>
 		<p class="h3">I'd like an art</p>
-		<form id="contact-form">
-			<label for="name">Name *</label><input type="text" name="name" id="">
-			<label for="email">Email Address *</label><input type="email" name="email" id="">
-			<label for="subject">Subject *</label><input type="text" name="subject" id="">
+		<form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+			<input type="hidden" name="apikey" value="c82a714f-12e5-4a58-97ee-1edba44cf78d">
+			<label for="name">Name *</label><input type="text" name="name" id="" required>
+			<label for="email">Email Address *</label><input type="email" name="email" id="" required>
+			<label for="subject">Subject *</label><input type="text" name="subject" id="" required>
 			<label for="message">Message *</label>
-			<textarea form="contact-form" name="message" id="" cols="30" rows="10"></textarea>
+			<textarea form="contact-form" name="message" id="" cols="30" rows="10" required></textarea>
+			<input type="hidden" name="redirect" value="https://web3forms.com/success">
 			<button type="submit">Submit</button>
 		</form>
 	</dialog>
@@ -42,7 +51,7 @@
 		</nav>
 
 		<footer>
-			<a href="https://twitter.com/plauk">
+			<a href="https://twitter.com/plauk" aria-label="twitter.com/plauk">
 				<svg style="width: 28px; fill: white;" viewBox="0 0 400 400">
 					<use xlink:href="/images/twitter.svg#logo"></use>
 				</svg>
@@ -51,14 +60,14 @@
 	</div>
 
 	<div class="crossfade">
-		<img src="/images/scene2_f1.png">
-		<img src="/images/page_2+v3f+-+web.jpg">
-		<img src="/images/lucky_1000w.jpg">
-		<img src="/images/capaldi.png">
-		<img src="/images/phil_1000w.jpg">
-		<img src="/images/szach_1500w.jpg">
-		<img src="/images/szach2.jpg">
-		<img src="/images/the-home-team-location-2.jpg">
+		<img data-tx=50 data-ty=75 src="/images/extr_hq.webp" alt="scene from extremist article">
+		<img loading=lazy style="object-position: 50% 75%" data-tx=0 data-ty=95 src="/images/tht_cliff_smooth.webp" alt="concept for The Home Team">
+		<img loading=lazy data-tx=0 data-ty=-50 src="/images/lucky_1500w.webp" alt="portrait of Lucky">
+		<img loading=lazy data-tx=-50 data-ty=-50 src="/images/capaldi.webp" alt="scribble of Peter Capaldi">
+		<img loading=lazy style="object-position: 50% 75%" data-tx=50 data-ty=-50 src="/images/phil.webp" alt="portrait of Phil">
+		<img loading=lazy data-tx=0 data-ty=-50 src="/images/szach.webp" alt="portrait of David Szach for article">
+		<img loading=lazy data-tx=-50 data-ty=100 src="/images/szach2.webp" alt="scene of body in freezer from Szach article">
+		<img loading=lazy style="object-position: 50% 65%" data-tx=50 data-ty=75 src="/images/tht-futuro.webp" alt="scene concept for The Home Team">
 	</div>
 
 	<script>
@@ -68,6 +77,12 @@
 
 		document.querySelector("#close-dialog").addEventListener("click", e => {
 			document.querySelector("#contact-dialog").close();
+		});
+
+		// because attr doesn't support typed attributes ("px")
+		document.querySelectorAll(".crossfade img").forEach(i => {
+			i.style.setProperty("--tx", i.getAttribute("data-tx") + "px");
+			i.style.setProperty("--ty", i.getAttribute("data-ty") + "px");
 		});
 	</script>
 
